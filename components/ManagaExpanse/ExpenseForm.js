@@ -7,6 +7,7 @@ function ExpenseForm() {
 
   return (
     <View>
+      <View>
       <Input
         label="Amount"
         textInputConfig={{
@@ -22,6 +23,7 @@ function ExpenseForm() {
           onChangeText: () => {},
         }}
       />
+      </View>
       <Input
         label="Description"
         textInputConfig={{
@@ -35,3 +37,19 @@ function ExpenseForm() {
 }
 
 export default ExpenseForm;
+
+const styles = StyleSheet.create({
+  form:{
+
+  },
+  title:{
+
+  },
+  inputRow:{
+
+  },
+  rowInput:{
+    
+  }
+
+})
