@@ -8,7 +8,7 @@ function ExpenseForm({onCancel, onSubmit, submitButtonLabel}) {
 const [inputValues, setInputValues] = useState({
   amount:'',
   date:'',
-  desctription:'',
+  description:'',
 })
 
   function inputChangedHandler(inputIdentifier,enteredValue) {
@@ -22,7 +22,12 @@ const [inputValues, setInputValues] = useState({
   }
 
   function submitHandler(){
-
+    const expenseData = {
+      amount : +inputValues.amount, //+ is mean turning string into number
+      date : new Date(inputValues.date),
+      description: inputValues.description
+    }
+    onSubmit(expenseData)
   }
 
   return (
@@ -54,7 +59,7 @@ const [inputValues, setInputValues] = useState({
           // autoCapitalize: 'none'
           // autoCorrect: false // default is true
           onChangeText: inputChangedHandler.bind(this, 'description'),
-          value: inputValues.desctription,
+          value: inputValues.description,
         }}
       />
       <View style={styles.buttons}>
@@ -65,16 +70,6 @@ const [inputValues, setInputValues] = useState({
          {submitButtonLabel}
         </Button>
       </View>
-      {isEditing && (
-        <View style={styles.deleteContainer}>
-          <IconButton
-            icon="trash"
-            color={GlobalStyles.colors.error500}
-            size={36}
-            onPress={deleteExpenseHandler}
-          />
-        </View>
-      )}
     </View>
   );
 }
